@@ -64,36 +64,36 @@ jobs:
 #        if: matrix.os == 'windows-latest' && matrix.python-version != '3.10'
 #        run: make test-no-spark
 #
-#
-#  lint:
-#    defaults:
-#      run:
-#        shell: bash
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
-#      - name: Set up Python 3.8
-#        uses: actions/setup-python@v3
-#        with:
-#          python-version: 3.8
-#      - name: Cache python packages
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.cache/pip
-#          key: ${{matrix.os}}-python-${{matrix.python-version}}
-#      - name: Install dependencies
-#        run: |
-#            make install-test-requirements
-#            make install-pre-commit
-#            pip freeze
-#      - name: Run linter
-#        run: make lint
+
+  lint:
+    defaults:
+      run:
+        shell: bash
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Cache python packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{matrix.os}}-python-${{matrix.python-version}}
+      - name: Install dependencies
+        run: |
+            make install-test-requirements
+            make install-pre-commit
+            pip freeze
+      - name: Run linter
+        run: make lint
 
   e2e-tests:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, windows-latest ]
         python-version: [ "3.7", "3.8", "3.9", "3.10" ]
     runs-on: ${{ matrix.os }}
     steps:
