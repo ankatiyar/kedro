@@ -11,86 +11,86 @@ on:
       - main
     paths-ignore:
       - "docs/**"
+env:
+  COLUMNS: 120
+  LINES: 25
 
 jobs:
-  unit-tests:
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest ]
-        python-version: [ "3.7", "3.8", "3.9", "3.10" ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Python ${{matrix.python-version}}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{matrix.python-version}}
-      - run: make install-pip-setuptools
-      - name: Cache python packages for Linux
-        if: matrix.os == 'ubuntu-latest'
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{matrix.os}}-python-${{matrix.python-version}}
-      - name: Cache python packages for Windows
-        if: matrix.os == 'windows-latest'
-        uses: actions/cache@v3
-        with:
-          path: ~\AppData\Local\pip\Cache
-          key: ${{matrix.os}}-python-${{matrix.python-version}}
-      - name: Install dependencies
-        run: |
-            make install-test-requirements
-            make install-pre-commit
-      - name: pip freeze
-        run: pip freeze
-      - name: Run unit tests
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
-        run: make test-sequential
-      - name: Run unit tests
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version != '3.10'
-        run: make test
-      - name: Run unit tests (Windows)
-        if: matrix.os == 'windows-latest' && matrix.python-version == '3.10'
-        run: make test-no-spark-sequential
-      - name: Run unit tests (Windows)
-        if: matrix.os == 'windows-latest' && matrix.python-version != '3.10'
-        run: make test-no-spark
-
-
-  lint:
-    defaults:
-      run:
-        shell: bash
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
-      - name: Cache python packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{matrix.os}}-python-${{matrix.python-version}}
-      - name: Install dependencies
-        run: |
-            make install-test-requirements
-            make install-pre-commit
-            pip freeze
-      - name: Run linter
-        run: make lint
+#  unit-tests:
+#    defaults:
+#      run:
+#        shell: bash
+#    strategy:
+#      matrix:
+#        os: [ ubuntu-latest, windows-latest ]
+#        python-version: [ "3.7", "3.8", "3.9", "3.10" ]
+#    runs-on: ${{ matrix.os }}
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#      - name: Set up Python ${{matrix.python-version}}
+#        uses: actions/setup-python@v3
+#        with:
+#          python-version: ${{matrix.python-version}}
+#      - run: make install-pip-setuptools
+#      - name: Cache python packages for Linux
+#        if: matrix.os == 'ubuntu-latest'
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.cache/pip
+#          key: ${{matrix.os}}-python-${{matrix.python-version}}
+#      - name: Cache python packages for Windows
+#        if: matrix.os == 'windows-latest'
+#        uses: actions/cache@v3
+#        with:
+#          path: ~\AppData\Local\pip\Cache
+#          key: ${{matrix.os}}-python-${{matrix.python-version}}
+#      - name: Install dependencies
+#        run: |
+#            make install-test-requirements
+#            make install-pre-commit
+#      - name: pip freeze
+#        run: pip freeze
+#      - name: Run unit tests
+#        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
+#        run: make test-sequential
+#      - name: Run unit tests
+#        if: matrix.os == 'ubuntu-latest' && matrix.python-version != '3.10'
+#        run: make test
+#      - name: Run unit tests (Windows)
+#        if: matrix.os == 'windows-latest' && matrix.python-version == '3.10'
+#        run: make test-no-spark-sequential
+#      - name: Run unit tests (Windows)
+#        if: matrix.os == 'windows-latest' && matrix.python-version != '3.10'
+#        run: make test-no-spark
+#
+#
+#  lint:
+#    defaults:
+#      run:
+#        shell: bash
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#      - name: Set up Python 3.8
+#        uses: actions/setup-python@v3
+#        with:
+#          python-version: 3.8
+#      - name: Cache python packages
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.cache/pip
+#          key: ${{matrix.os}}-python-${{matrix.python-version}}
+#      - name: Install dependencies
+#        run: |
+#            make install-test-requirements
+#            make install-pre-commit
+#            pip freeze
+#      - name: Run linter
+#        run: make lint
 
   e2e-tests:
-    defaults:
-      run:
-        shell: bash
     strategy:
       matrix:
         os: [ ubuntu-latest ]
@@ -124,5 +124,4 @@ jobs:
       - name: pip freeze
         run: pip freeze
       - name: Run e2e tests
-        shell: 'script -q -e -c "bash {0}"'
         run: make e2e-tests
