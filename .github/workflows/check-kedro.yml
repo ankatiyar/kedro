@@ -74,4 +74,3 @@ jobs:
             pip freeze
       - name: Run linter
         run: make lint
-
