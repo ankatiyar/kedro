@@ -46,6 +46,7 @@ jobs:
         run: |
             make install-test-requirements
             make install-pre-commit
+            conda install -c conda-forge pytables -y
       - name: pip freeze
         run: pip freeze
       - name: Run unit tests
