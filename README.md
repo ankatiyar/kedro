@@ -23,7 +23,7 @@ To install Kedro from the Python Package Index (PyPI) run:
 ```
 pip install kedro
 ```
-trigger ci
+trigger ci xx
 
 It is also possible to install Kedro using `conda`:
 
