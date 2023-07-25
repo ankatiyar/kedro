@@ -19,6 +19,12 @@ test:
 test-no-spark:
 	pytest --no-cov --ignore tests/extras/datasets/spark --numprocesses 4 --dist loadfile
 
+test-sequential:
+	pytest tests --cov-config pyproject.toml
+
+test-no-spark-sequential:
+	pytest tests --no-cov --ignore tests/extras/datasets/spark
+
 test-no-datasets:
 	pytest --no-cov --ignore tests/extras/datasets/ --numprocesses 4 --dist loadfile
 
