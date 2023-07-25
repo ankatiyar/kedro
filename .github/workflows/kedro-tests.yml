@@ -55,7 +55,10 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.python-version != '3.10'
         run: PYTEST_ADDOPTS="-v" make test
       - name: Run unit tests (Windows)
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-latest' && matrix.python-version == '3.10'
+        run: PYTEST_ADDOPTS="-v" make test-no-spark-sequential
+      - name: Run unit tests (Windows)
+        if: matrix.os == 'windows-latest' && matrix.python-version != '3.10'
         run: PYTEST_ADDOPTS="-v" make test-no-spark
 
 
@@ -121,4 +124,5 @@ jobs:
       - name: pip freeze
         run: pip freeze
       - name: Run e2e tests
+        shell: 'script -q -e -c "bash {0}"'
         run: make e2e-tests
