@@ -3,6 +3,8 @@ name: Trigger Release
 on:
   release:
     types: [published]
+permissions:
+  contents: write
   
 jobs:
   trigger-release:
