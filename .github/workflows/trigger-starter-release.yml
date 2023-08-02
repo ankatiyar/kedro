@@ -14,6 +14,6 @@ jobs:
       - name: Trigger Release in Target Repo
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.PAT }}  # Personal Access Token or Repo Token with appropriate permissions
+          token: ${{ secrets.NEW }}  # Personal Access Token or Repo Token with appropriate permissions
           repository: ankatiyar/kedro-starters
           event-type: release-triggered
