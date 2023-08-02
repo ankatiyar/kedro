@@ -1,10 +1,10 @@
 name: Trigger Release
 
 on:
-  release:
-    types:
-      - published
-
+  push:
+    branches:
+      - main
+  
 jobs:
   trigger-release:
     runs-on: ubuntu-latest
