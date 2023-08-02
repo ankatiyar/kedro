@@ -2,7 +2,8 @@ name: Trigger Release
 
 on:
   release:
-    types: [created]
+    types: [published]
+    
 permissions:
   contents: write
   
@@ -11,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Print hello
+        run: echo "HELLOOO"
       - name: Trigger Release in Target Repo
         uses: peter-evans/repository-dispatch@v2
         with:
