@@ -3,18 +3,13 @@ name: Trigger Starter Release
 on:
   release:
     types: [published]
-    
-permissions:
-  contents: write
   
 jobs:
   trigger-release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print hello
-        run: echo "HELLOOO"
-      - name: Trigger Release in Target Repo
+      - name: Trigger release in kedro-starters
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PAT }}  # Personal Access Token or Repo Token with appropriate permissions
