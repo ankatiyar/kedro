@@ -1,0 +1,18 @@
+name: Trigger Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  trigger-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Release in Target Repo
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.SOURCE_REPO_TOKEN }}  # Personal Access Token or Repo Token with appropriate permissions
+          repository: ankatiyar/kedro-starters
+          event-type: release-triggered
