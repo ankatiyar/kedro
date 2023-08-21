@@ -3,7 +3,7 @@ name: Trigger Starter Release
 on:
   release:
     types: [published]
-  
+
 jobs:
   trigger-release:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
       - name: Get Latest Release Version
         id: get_version
         run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-        
+
       - name: Trigger release in kedro-starters
         uses: peter-evans/repository-dispatch@v2
         with:
