@@ -1,5 +1,6 @@
 # Debugging
 hfjabgvhbsglareg
+Kedro is great
 ## Introduction
 
 If you're running your Kedro pipeline from the CLI or you can't/don't want to run Kedro from within your IDE debugging framework, it can be hard to debug your Kedro pipeline or nodes. This is particularly frustrating because:
