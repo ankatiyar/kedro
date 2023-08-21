@@ -32,7 +32,7 @@ def _get_config_from_patterns(
     ac_context: dict[str, Any] = None,
 ) -> dict[str, Any]:
     """Recursively scan for configuration files, load and merge them, and
-    return them in the form of a config dictionary.
+    return them in the form of a config dictionary. Random things here
 
     Args:
         conf_paths: List of configuration paths to directories
@@ -95,7 +95,7 @@ def _get_config_from_patterns(
 
         config.update(new_conf)
         processed_files |= set(config_filepaths)
-
+    # hello
     if not processed_files:
         raise MissingConfigException(
             f"No files found in {conf_paths} matching the glob "
