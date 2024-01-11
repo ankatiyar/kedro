@@ -24,13 +24,9 @@ jobs:
 
   merge-pr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: maybe merge automatic PR to develop
-        run: ./tools/circleci/github_scripts/attempt_merge_pr.sh "merge-main-to-develop" "develop" "${{ secrets.GITHUB_TOKEN }}"
+      steps:
+          - id: automerge
+            name: automerge
+            uses: pascalgn/automerge-action@v0.16.2
+            env:
+              GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
