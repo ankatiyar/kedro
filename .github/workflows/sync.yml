@@ -24,6 +24,8 @@ jobs:
 
   merge-pr:
     runs-on: ubuntu-latest
+    permission:
+      contents: write
     steps:
       - name: checkout
         uses: actions/checkout@v3
