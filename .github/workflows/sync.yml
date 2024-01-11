@@ -21,3 +21,14 @@ jobs:
 
       - name: maybe merge upstream into master or raise a PR
         run: ./tools/github_actions/merge.sh . "main" "develop" "${{ secrets.GITHUB_TOKEN }}"
+
+  merge-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: maybe merge automatic PR to develop
+        run: ./tools/circleci/github_scripts/attempt_merge_pr.sh "merge-main-to-develop" "develop" "${{ secrets.GITHUB_TOKEN }}"
