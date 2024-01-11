@@ -36,4 +36,4 @@ jobs:
             git config --global user.name "ankatiyar"
 
         - name: maybe merge upstream into master or raise a PR
-          run: ./tools/github_actions/attemp_merge_pr.sh . "merge-main-to-develop" "develop" "${{ secrets.GITHUB_TOKEN }}"
+          run: ./tools/github_actions/attempt_merge_pr.sh . "merge-main-to-develop" "develop" "${{ secrets.GITHUB_TOKEN }}"
