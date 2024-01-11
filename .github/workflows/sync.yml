@@ -24,7 +24,7 @@ jobs:
 
   merge-pr:
     runs-on: ubuntu-latest
-    permission:
+    permissions:
       contents: write
     steps:
       - name: checkout
