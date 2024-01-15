@@ -23,7 +23,7 @@ Kedro is an open-source Python framework hosted by the [LF AI & Data Foundation]
 
 ## How do I install Kedro?
 
-To install Kedro from the Python Package Index (PyPI) run:
+To install Kedro from the Python Package Index (PyPI) run x:
 
 ```
 pip install kedro
