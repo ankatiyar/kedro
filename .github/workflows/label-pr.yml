@@ -1,0 +1,13 @@
+name: Label PRs
+on:
+  pull_request:
+    - opened
+
+jobs:
+  label-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/labeler@v5

@@ -20,7 +20,7 @@ PR_BRANCH="merge-${SOURCE_BRANCH}-to-${TARGET_BRANCH}"
 
 # The Github details to raise a PR
 GITHUB_TAGGING_TOKEN=$4
-GITHUB_USER="kedro-org"
+GITHUB_USER="ankatiyar"
 GITHUB_REPO="kedro"
 GITHUB_ENDPOINT="https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/pulls"
 PAYLOAD=$(cat <<-END
@@ -28,7 +28,7 @@ PAYLOAD=$(cat <<-END
     "title": "[AUTO-MERGE] Merge ${SOURCE_BRANCH} into ${TARGET_BRANCH} via ${PR_BRANCH}",
     "head": "${PR_BRANCH}",
     "base": "${TARGET_BRANCH}",
-    "body": "A new change in ${SOURCE_BRANCH} cannot be merged into ${TARGET_BRANCH} as part of the regular sync job, hence this PR. Please resolve the conflicts manually, and make sure to obtain 2 approvals once the builds pass.\\n\\n### IMPORTANT NOTICE\\n\\nPlease let CircleCI merge this PR automatically, with merge commit enabled."
+    "body": "A new change in ${SOURCE_BRANCH} cannot be merged into ${TARGET_BRANCH} as part of the regular sync job, hence this PR. Please resolve the conflicts manually, and make sure to obtain 2 approvals once the builds pass.\\n\\n### IMPORTANT NOTICE\\n\\nPlease let Github Actions merge this PR automatically, with merge commit enabled."
 }
 END
 )
