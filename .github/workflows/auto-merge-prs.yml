@@ -10,7 +10,7 @@ on:
 jobs:
   automerge:
     permissions:
-      pull-requests: read
+      pull-requests: write
       contents: write
     runs-on: ubuntu-latest
     steps:
