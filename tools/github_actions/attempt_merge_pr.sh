@@ -41,7 +41,15 @@ check_pr_mergeable() {
   echo "PR ${pr} mergeable: ${mergeable}"
   mergeable_state=$(echo "${response}" | tr '\r\n' ' ' | jq --raw-output ".mergeable_state // \"unknown\"")
   echo "PR ${pr} mergeable_state: ${mergeable_state}"
-  [ "${mergeable}" == true ] && [[ " ${VALID_MERGEABLE_STATES[@]} " =~ " ${mergeable_state} " ]]
+  if [ "${mergeable}" == true ]; then
+    for state in "${VALID_MERGEABLE_STATES[@]}"; do
+        if [ "${state}" == "${mergeable_state}" ]; then
+            # Your code when mergeable and mergeable_state match
+            echo "Mergeable is true and mergeable_state is valid."
+            break
+        fi
+    done
+  fi
 }
 
 toggle_merge_commits() {
