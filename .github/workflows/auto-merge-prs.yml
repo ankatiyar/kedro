@@ -4,13 +4,13 @@ name: Auto-merge sync PR
 
 on:
   schedule:
-    - cron: '*/60 * * * *' # every 60 minutes
+    - cron: '*/10 * * * *' # every 60 minutes
   workflow_dispatch: # on button click
 
 jobs:
   automerge:
     permissions:
-      pull-requests: read
+      pull-requests: write
       contents: write
     runs-on: ubuntu-latest
     steps:
