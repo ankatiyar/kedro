@@ -89,8 +89,6 @@ merge_pr() {
   merged=$(echo "${response}" | tr '\r\n' ' ' | jq ".merged // false")  # default to false
   if [ "${merged}" == true ]; then
     echo "PR ${pr} successfully merged"
-    delete_git_ref "heads/${SOURCE_BRANCH}"
-    echo "Branch ${SOURCE_BRANCH} successfully deleted"
   else
     message=$(echo "${response}" | tr '\r\n' ' ' | jq --raw-output ".message")
     echo "PR ${pr} NOT merged. Message: ${message}"
