@@ -1,0 +1,21 @@
+{
+    "version": 1,
+
+    "project": "project",
+
+    "project_url": "http://project-homepage.org/",
+
+    "repo": ".",
+
+    
+    "install_command": ["in-dir={env_dir} python -mpip install {wheel_file}"],
+    "branches": ["main"], 
+    "environment_type": "conda",
+
+    "show_commit_url": "http://github.com/ankatiyar/kedro/commit/",
+
+    
+    "results_dir": ".asv/results",
+
+    "html_dir": ".asv/html",
+}
