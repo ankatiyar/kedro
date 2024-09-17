@@ -31,7 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install asv  # Install ASV
-          pip install -e ".[test]"  # Your project dependencies, if needed
+          # pip install -e ".[test]"  # Your project dependencies, if needed
       - name: Run ASV benchmarks
         run: |
           asv machine --yes
