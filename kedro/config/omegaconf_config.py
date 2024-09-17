@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Callable, Iterable
 
 import fsspec
+import time
 from omegaconf import DictConfig, OmegaConf
 from omegaconf.errors import InterpolationResolutionError, UnsupportedInterpolationType
 from omegaconf.resolvers import oc
@@ -295,6 +296,7 @@ class OmegaConfigLoader(AbstractConfigLoader):
             Resulting configuration dictionary.
 
         """
+        time.sleep(3)
 
         if not self._fs.isdir(Path(conf_path).as_posix()):
             raise MissingConfigException(
