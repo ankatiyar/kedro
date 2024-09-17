@@ -8,7 +8,7 @@
     "repo": ".",
 
     
-    "install_command": ["in-dir={env_dir} python -mpip install {wheel_file}"],
+    "install_command": ["pip install -e ."],
     "branches": ["main"], 
     "environment_type": "conda",
 
@@ -17,5 +17,5 @@
     
     "results_dir": ".asv/results",
 
-    "html_dir": ".asv/html",
+    "html_dir": ".asv/html"
 }
