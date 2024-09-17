@@ -19,7 +19,6 @@ from omegaconf.errors import InterpolationResolutionError, UnsupportedInterpolat
 from omegaconf.resolvers import oc
 from yaml.parser import ParserError
 from yaml.scanner import ScannerError
-import time
 from kedro.config.abstract_config import AbstractConfigLoader, MissingConfigException
 
 _config_logger = logging.getLogger(__name__)
@@ -146,8 +145,7 @@ class OmegaConfigLoader(AbstractConfigLoader):
 
         # Setup file system and protocol
         self._fs, self._protocol = self._initialise_filesystem_and_protocol(conf_source)
-        time.sleep(10)
-
+        
         super().__init__(
             conf_source=conf_source,
             env=env,
