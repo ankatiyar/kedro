@@ -37,9 +37,9 @@ class OmegaConfigLoaderSuite:
         self.config_loader = OmegaConfigLoader(conf_source=str(self.conf_source), env=self.env)
 
     # ASV teardown method, called once per class
-    def teardown(self):
-        # Clean up temporary files
-        self.temp_dir.cleanup()
+    # def teardown(self):
+    #     # Clean up temporary files
+    #     self.temp_dir.cleanup()
 
     # Benchmark the loading of configurations
     def time_load_config(self):
