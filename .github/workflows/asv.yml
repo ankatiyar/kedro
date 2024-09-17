@@ -11,8 +11,6 @@ jobs:
 
   benchmark:
     permissions:
-      contents: write
-      pages: write
       id-token: write
     runs-on: ubuntu-latest
 
