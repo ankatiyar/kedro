@@ -10,7 +10,7 @@
     
     "install_command": ["pip install -e ."],
     "branches": ["main"], 
-    "environment_type": "conda",
+    "environment_type": "virtualenv",
 
     "show_commit_url": "http://github.com/ankatiyar/kedro/commit/",
 
