@@ -34,6 +34,7 @@ jobs:
           # pip install -e ".[test]"  # Your project dependencies, if needed
       - name: Run ASV benchmarks
         run: |
+          cd kedro
           asv machine --yes
           asv run
           asv publish
