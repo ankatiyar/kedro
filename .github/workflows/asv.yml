@@ -37,7 +37,6 @@ jobs:
           cd kedro
           asv machine --yes
           asv run
-          asv publish
 
       - name: Set git email and name
         run: |
