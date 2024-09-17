@@ -54,7 +54,7 @@ jobs:
       
       - name: Copy files to target repository
         run: |
-          cp -r kedro/kedro/.asv/* .
+          cp -r /home/runner/work/kedro/kedro/kedro/.asv .
 
       - name: Commit and Push changes
         run: |
