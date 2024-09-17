@@ -54,10 +54,11 @@ jobs:
       
       - name: Copy files to target repository
         run: |
-          cp -r /home/runner/work/kedro/kedro/kedro/.asv .
+          cp -r /home/runner/work/kedro/kedro/kedro/.asv /home/runner/work/kedro/kedro/benchmark-kedro/.asv
 
       - name: Commit and Push changes
         run: |
+          cd benchmark-kedro
           git add .
           git commit -m "Add files from source repository"
           git push
