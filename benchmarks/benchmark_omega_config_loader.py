@@ -37,14 +37,14 @@ class OmegaConfigLoaderSuite:
         self.config_loader = OmegaConfigLoader(conf_source=str(self.conf_source), env=self.env)
 
     # ASV teardown method, called once per class
-    # def teardown(self):
-    #     # Clean up temporary files
-    #     self.temp_dir.cleanup()
+    def teardown(self):
+        # Clean up temporary files
+        self.temp_dir.cleanup()
 
-    # Benchmark the loading of configurations
-    def time_load_config(self):
-        """Time how long it takes to load and merge configuration."""
-        self.config_loader["config1"]
+    # # Benchmark the loading of configurations
+    # def time_load_config(self):
+    #     """Time how long it takes to load and merge configuration."""
+    #     self.config_loader["config1"]
 
     # Benchmark the loading of configurations without merging
     def time_load_config_without_merge(self):
@@ -71,9 +71,9 @@ class OmegaConfigLoaderSuite:
         env_config = {'key1': 'overridden_value1', 'key3': 'value3'}
         self.config_loader._soft_merge(base_config, env_config)
 
-    # Benchmark resolving environment variables
-    def time_resolve_environment_variables(self):
-        """Benchmark the resolution of environment variables in the config."""
-        config = OmegaConf.create({"path": "${oc.env:HOME}"})
-        self.config_loader._resolve_environment_variables(config)
+    # # Benchmark resolving environment variables
+    # def time_resolve_environment_variables(self):
+    #     """Benchmark the resolution of environment variables in the config."""
+    #     config = OmegaConf.create({"path": "${oc.env:HOME}"})
+    #     self.config_loader._resolve_environment_variables(config)
 
