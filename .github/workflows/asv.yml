@@ -10,8 +10,6 @@ on:
 jobs:
 
   benchmark:
-    permissions:
-      id-token: write
     runs-on: ubuntu-latest
 
     steps:
