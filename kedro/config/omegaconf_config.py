@@ -146,6 +146,7 @@ class OmegaConfigLoader(AbstractConfigLoader):
 
         # Setup file system and protocol
         self._fs, self._protocol = self._initialise_filesystem_and_protocol(conf_source)
+        sleep(10)
 
         super().__init__(
             conf_source=conf_source,
